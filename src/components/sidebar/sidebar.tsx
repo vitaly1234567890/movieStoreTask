@@ -1,14 +1,15 @@
 import s from './sidebar.module.scss'
-import {Icons} from "../../assets/icons/icons.tsx";
+import {NavLink} from "react-router-dom";
+
 export const Sidebar = () => {
     return (
-        <div className={s.root}>
-            <div className={s.sidebar}>
-                <Icons iconId={"sidebar"}/>
-                <span className={s.sidebarTitle}>ArrowFlicks</span>
+            <div className={s.root}>
+                <NavLink to={'/movies'}>
+                    <div className={s.element}> Movie</div>
+                </NavLink>
+                <NavLink to={'/ratedMovies'}>
+                <div className={s.element}>Rated movie</div>
+                </NavLink>
             </div>
-            <div className={s.element}>Movie</div>
-            <div className={s.element}>Rated movie</div>
-        </div>
     );
 };
