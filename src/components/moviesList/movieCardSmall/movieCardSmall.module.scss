@@ -1,0 +1,66 @@
+.root {
+  width: 482px;
+  height: 218px;
+  background-color: var(--color-white);
+  border-radius: 12px;
+}
+
+.mainContent {
+  display: flex;
+  padding: 24px;
+}
+
+.img {
+  height: 170px;
+  width: 119px;
+}
+
+.posterWrap {
+  height: 170px;
+  width: 119px;
+  background-color: var(--color-grey-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centered {
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
+  width: 263px;
+  height: 170px;
+  justify-content: space-around;
+}
+
+.title {
+  color: var(--color-purple-500-main);
+  font-size: 20px;
+}
+
+.release_date {
+  font-size: 16px;
+  color: var(--color-grey-600);
+}
+
+.rating {
+  display: flex;
+  gap: 4px
+}
+
+.ratingGrade {
+  font-weight: 600;
+
+}
+
+.voteCount {
+  color: var(--color-grey-600);
+}
+
+.genre {
+  color: var(--color-grey-600);
+}

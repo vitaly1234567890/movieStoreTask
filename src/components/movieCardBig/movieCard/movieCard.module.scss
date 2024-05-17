@@ -1,0 +1,82 @@
+.root {
+  width: 800px;
+  height: 400px;
+  background-color: var(--color-white);
+  border-radius: 12px;
+}
+
+.mainContent {
+  display: flex;
+  padding: 24px;
+}
+
+.img {
+  height: 352px;
+  width: 250px;
+}
+
+.posterWrap {
+  height: 352px;
+  width: 250px;
+  background-color: var(--color-grey-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centered {
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
+  width: 263px;
+  height: 170px;
+  justify-content: space-around;
+}
+
+.title {
+  color: var(--color-purple-500-main);
+  font-size: 20px;
+}
+
+.release_date {
+  font-size: 16px;
+  color: var(--color-grey-600);
+}
+
+.rating {
+  display: flex;
+  gap: 4px
+}
+
+.ratingGrade {
+  font-weight: 600;
+
+}
+
+.voteCount {
+  color: var(--color-grey-600);
+}
+
+.descriptionsContainer{
+  margin-top: 110px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.description {
+  color: var(--color-grey-600);
+  width: 120px; /* Ширина блока с описанием */
+}
+
+.descriptionOptions {
+
+  margin-left: 10px; /* Отступ слева для контента */
+  white-space: nowrap; /* Предотвращение переноса на новую строку */
+}
