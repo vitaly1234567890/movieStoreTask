@@ -1,19 +1,38 @@
 .root {
-  height: 100vh;
+  padding: 24px;
   width: 280px;
   background-color: var(--color-purple-100);
 }
 
-.element{
-  margin: auto;
-  width: 232px;
-  height: 42px;
-  font-size: 16px;
-  padding: 5px;
+.icon {
+  display: flex;
+  align-items: center;
+  margin-bottom: 80px;
 }
 
-.element:hover{
-  background-color: var(--color-purple-500-main);
+.sidebarTitle {
+  color: var(--color-purple-500-main);
+  margin-left: 14px;
+  font-size: 24px;
 }
+
+.element {
+  font-size: 16px;
+  padding: 5px;
+  color: var(--color-black);
+}
+
+.element:hover {
+  background-color: var(--color-purple-200);
+  border-radius: 8px;
+  color: var(--color-purple-500-main);
+}
+
+.select {
+  background-color: var(--color-purple-200);
+  border-radius: 8px;
+  color: var(--color-purple-500-main);
+}
+
 
 
