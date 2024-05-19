@@ -1,18 +1,12 @@
 import './App.css'
 import {Sidebar} from "./components/sidebar/sidebar.tsx";
-import {Header} from "./components/header/header.tsx";
 import { Routes, Route, Navigate } from 'react-router-dom';
 import {MoviesList} from "./components/moviesList/moviesList.tsx";
 import {MovieCardBig} from "./components/movieCardBig/movieCardBig.tsx";
 
-
 function App() {
-
     return (
-        <div>
-            <Header/>
             <div className='root'>
-
                 <Sidebar/>
                 <Routes>
                     <Route path={'/'} element={<Navigate to={'movies'}/>}/>
@@ -22,8 +16,6 @@ function App() {
                     <Route path={'*'} element={<div>Error 404. Not found</div>}/>
                 </Routes>
             </div>
-        </div>
-
     )
 }
 

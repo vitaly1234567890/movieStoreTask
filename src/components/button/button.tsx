@@ -3,8 +3,8 @@ import s from './button.module.scss'
 type Props = {
     className?: string;
     children: React.ReactNode;
-    variant?: 'primaryS' | 'primaryM' | 'text'
-    onClick?: () => void;
+    variant?: 'primaryS' | 'primaryM' | 'text' | 'icon'
+    onClick?: (event: any) => void;
     disabled?: boolean
 };
 

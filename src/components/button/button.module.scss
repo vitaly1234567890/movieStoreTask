@@ -1,9 +1,7 @@
 .button {
   all: unset;
-
   cursor: pointer;
   user-select: none;
-
   display: inline-flex;
   flex-shrink: 0;
   gap: 0.625rem;
@@ -52,23 +50,40 @@
 }
 
 .text {
-  cursor: pointer;
-  display: flex;
-  gap: 0.625rem;
+  display: inline-flex;
   align-items: center;
   background-color: var(--color-grey-100);
-  width: 150px;
-  height: 25px;
+  height: 42px;
   font-size: 14px;
-  color: var(--color-purple-500-main);
+  color: var(--color-grey-600);
+  border: none;
+  outline: none;
 
-  &:hover:enabled {
-    cursor: pointer;
+  &:hover {
     color: var(--color-purple-600);
+  }
+
+  &:focus {
+    outline: none;
   }
 
   &:disabled {
     cursor: default;
     color: var(--color-purple-400);
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 25px;
+  background-color: var(--color-white);
+  border: none;
+  outline: none;
+
+  &:focus {
+    outline: none;
   }
 }

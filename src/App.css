@@ -1,4 +1,5 @@
 .root {
     display: flex;
+    width: 1440px;
     background-color: var(--color-grey-100);
 }
