@@ -1,5 +1,8 @@
 .root {
     display: flex;
-    width: 1440px;
+    align-items: flex-start;
+    min-height: 100vh;
+    max-width: 1440px;
+    margin: 0 auto;
     background-color: var(--color-grey-100);
 }

@@ -1,19 +1,24 @@
 import './App.css'
 import {Sidebar} from "./components/sidebar/sidebar.tsx";
-import { Routes, Route, Navigate } from 'react-router-dom';
+import {Routes, Route, Navigate, useLocation} from 'react-router-dom';
 import {MoviesList} from "./components/moviesList/moviesList.tsx";
 import {MovieCardBig} from "./components/movieCardBig/movieCardBig.tsx";
+import {NotFound} from "./components/404/404.tsx";
+import {RatedMovies} from "./components/ratedMovies/ratedMovies.tsx";
 
 function App() {
+    const location = useLocation();
+    const showSidebar = location.pathname !== "/notfound";
     return (
             <div className='root'>
-                <Sidebar/>
+                { showSidebar && <Sidebar /> }
                 <Routes>
                     <Route path={'/'} element={<Navigate to={'movies'}/>}/>
                     <Route path={'/movies'} element={<MoviesList/>}/>
-                    <Route path={'/ratedMovies'} element={<div>Yoyoy</div>}/>
+                    <Route path={'/ratedMovies'} element={<RatedMovies />}/>
                     <Route path={'/movies/:id'} element={<MovieCardBig />}/>
-                    <Route path={'*'} element={<div>Error 404. Not found</div>}/>
+                    <Route path='/notfound' element={<NotFound/>}/>
+                    <Route path='*' element={<Navigate to="/notfound" />}/>
                 </Routes>
             </div>
     )
