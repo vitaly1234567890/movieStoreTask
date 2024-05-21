@@ -8,6 +8,8 @@
 .mainContent {
   display: flex;
   padding: 24px;
+  height: 100%;
+  flex-grow: 1
 }
 
 .img {
@@ -31,10 +33,12 @@
 .content {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding-left: 16px;
   width: 263px;
-  height: 170px;
-  justify-content: space-around;
+  //height: 170px;
+  height: 100%;
+  flex-grow: 1;
 }
 
 .title {
@@ -54,7 +58,6 @@
 
 .ratingGrade {
   font-weight: 600;
-
 }
 
 .voteCount {
@@ -62,21 +65,36 @@
 }
 
 .descriptionsContainer{
-  margin-top: 110px;
+  width: 500px;
 }
 
 .container {
   display: flex;
-  align-items: center;
 }
 
 .description {
   color: var(--color-grey-600);
-  width: 120px; /* Ширина блока с описанием */
+  width: 120px;
 }
 
 .descriptionOptions {
+  margin-left: 10px;
+}
 
-  margin-left: 10px; /* Отступ слева для контента */
-  white-space: nowrap; /* Предотвращение переноса на новую строку */
+.buttonWrap {
+  margin-left: auto;
+}
+
+.Button svg {
+  flex-shrink: 0;
+}
+
+.titleModal {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.activeButton {
+  display: flex;
+  gap: 7px;
 }

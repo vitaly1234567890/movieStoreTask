@@ -2,12 +2,17 @@ import s from "./movieCard.module.scss";
 import {Icons} from "../../../assets/icons/icons.tsx";
 import {formatNumber} from "../../moviesList/movieCardSmall/movieCardSmall.tsx";
 import {RootBigMovies} from "../../../services/movie/movies.types.ts";
+import {Button} from "../../ui/button/button.tsx";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../services/store.tsx";
 
 type Props = {
-    data: RootBigMovies | undefined
+    data: RootBigMovies
 }
 
 export const MovieCard = ({data}: Props) => {
+
+    const rating = useSelector((state: RootState) => state.ratedMovies.movieRatings[data.id]);
 
     function formatMinutes(minutes: number) {
         const hours = Math.floor(minutes / 60);
@@ -30,12 +35,14 @@ export const MovieCard = ({data}: Props) => {
                     <div className={`${s.posterWrap} ${s.centered}`}><Icons iconId={'noPoster'} width="57"
                                                                             height="44" viewBox="0 0 57 44"/></div>}
                 <div className={s.content}>
-                    <div className={s.title}>{data?.title}</div>
-                    <div className={s.release_date}>{data?.release_date.slice(0, 4)}</div>
-                    <div className={s.rating}>
-                        <span><Icons iconId={'star'} width={'26'} height={'25'} viewBox={'0 0 26 25'}/> </span>
-                        <span className={s.ratingGrade}>{data?.vote_average.toFixed(1)} </span>
-                        <span className={s.voteCount}> ({data && formatNumber(data.vote_count)})</span>
+                    <div>
+                        <div className={s.title}>{data?.title}</div>
+                        <div className={s.release_date}>{data?.release_date.slice(0, 4)}</div>
+                        <div className={s.rating}>
+                            <span><Icons iconId={'star'} width={'26'} height={'25'} viewBox={'0 0 26 25'}/> </span>
+                            <span className={s.ratingGrade}>{data?.vote_average.toFixed(1)} </span>
+                            <span className={s.voteCount}> ({data && formatNumber(data.vote_count)})</span>
+                        </div>
                     </div>
                     <div className={s.descriptionsContainer}>
                         <div className={s.container}>
@@ -60,7 +67,34 @@ export const MovieCard = ({data}: Props) => {
                         </div>
                     </div>
                 </div>
-                <div>rating2</div>
+                <div className={s.buttonWrap}>
+                    {rating > 0 ? (
+                        <div className={s.activeButton}>
+                            <Button
+                                className={s.Button}
+                                variant={'icon'}
+                                children={
+                                    <Icons viewBox={"0 0 26 25"}
+                                           width={'26'}
+                                           height={'25'}
+                                           iconId={'buttonIconActive'}/>
+                                }
+                            />
+                            <span className={s.titleModal}>{rating}</span>
+                        </div>
+                    ) : (
+                        <Button
+                            className={s.Button}
+                            variant={'icon'}
+                            children={
+                                <Icons viewBox={"0 0 26 25"}
+                                       width={'26'}
+                                       height={'25'}
+                                       iconId={'buttonIcon'}/>
+                            }
+                        />
+                    )}
+                </div>
             </div>
         </div>
     );

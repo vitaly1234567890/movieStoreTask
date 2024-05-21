@@ -2,7 +2,7 @@ import s from './movieDescription.module.scss'
 import {RootBigMovies} from "../../../services/movie/movies.types.ts";
 
 type Props = {
-    data: RootBigMovies | undefined
+    data: RootBigMovies
 }
 export const MovieDescription = ({data}: Props) => {
 

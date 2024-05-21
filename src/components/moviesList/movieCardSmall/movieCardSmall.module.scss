@@ -8,6 +8,7 @@
 .mainContent {
   display: flex;
   padding: 24px;
+  justify-content: space-between;
 }
 
 .img {
@@ -34,7 +35,7 @@
   padding-left: 16px;
   width: 263px;
   height: 170px;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .title {
@@ -62,5 +63,39 @@
 }
 
 .genre {
+  margin-top: auto;
   color: var(--color-grey-600);
+}
+
+.Button svg {
+  flex-shrink: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.line {
+  border: 1px solid var(--color-grey-300);
+}
+
+.buttons {
+  margin-top: 16px;
+}
+
+.buttons .buttonText {
+  background-color: var(--color-white);
+  color: var(--color-purple-500-main);
+  margin-left: 16px;
+}
+
+.titleModal {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.activeButton {
+  display: flex;
+  gap: 7px;
 }

@@ -6,16 +6,17 @@ import {useParams} from "react-router-dom";
 
 export const MovieCardBig = () => {
     const {id} = useParams()
-    const moviedId = id || '-1'
+    const moviedId = id || ''
     const {data} = useGetBigMoviesQuery({movie_id: +moviedId, language: "en-US"})
+    console.log(data)
 
     return (
         <div className={s.root}>
             <div className={s.container}>
                 <p className={s.title}>Movies / {data?.original_title}</p>
-                <MovieCard data={data}/>
+                {data && <MovieCard data={data}/>}
                 <div className={s.contentWrapper}>
-                    <MovieDescription data={data}/>
+                    {data && <MovieDescription data={data}/>}
                 </div>
             </div>
         </div>
