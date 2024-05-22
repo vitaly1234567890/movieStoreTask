@@ -1,16 +1,16 @@
-import s from "./movieCard.module.scss";
+import s from "./movieCardInfo.module.scss";
 import {Icons} from "../../../assets/icons/icons.tsx";
-import {formatNumber} from "../../moviesList/movieCardSmall/movieCardSmall.tsx";
 import {RootBigMovies} from "../../../services/movie/movies.types.ts";
 import {Button} from "../../ui/button/button.tsx";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../services/store.tsx";
+import {FormatNumber} from "../../../utils/formatNumber.tsx";
 
 type Props = {
     data: RootBigMovies
 }
 
-export const MovieCard = ({data}: Props) => {
+export const MovieCardInfo = ({data}: Props) => {
 
     const rating = useSelector((state: RootState) => state.ratedMovies.movieRatings[data.id]);
 
@@ -41,7 +41,7 @@ export const MovieCard = ({data}: Props) => {
                         <div className={s.rating}>
                             <span><Icons iconId={'star'} width={'26'} height={'25'} viewBox={'0 0 26 25'}/> </span>
                             <span className={s.ratingGrade}>{data?.vote_average.toFixed(1)} </span>
-                            <span className={s.voteCount}> ({data && formatNumber(data.vote_count)})</span>
+                            <span className={s.voteCount}> ({data && FormatNumber(data.vote_count)})</span>
                         </div>
                     </div>
                     <div className={s.descriptionsContainer}>
@@ -68,7 +68,6 @@ export const MovieCard = ({data}: Props) => {
                     </div>
                 </div>
                 <div className={s.buttonWrap}>
-                    {rating > 0 ? (
                         <div className={s.activeButton}>
                             <Button
                                 className={s.Button}
@@ -77,25 +76,13 @@ export const MovieCard = ({data}: Props) => {
                                     <Icons viewBox={"0 0 26 25"}
                                            width={'26'}
                                            height={'25'}
-                                           iconId={'buttonIconActive'}/>
+                                           iconId={rating > 0 ? 'buttonIconActive' : 'buttonIcon'}/>
                                 }
                             />
-                            <span className={s.titleModal}>{rating}</span>
+                            {rating && <span className={s.titleModal}>{rating}</span>}
                         </div>
-                    ) : (
-                        <Button
-                            className={s.Button}
-                            variant={'icon'}
-                            children={
-                                <Icons viewBox={"0 0 26 25"}
-                                       width={'26'}
-                                       height={'25'}
-                                       iconId={'buttonIcon'}/>
-                            }
-                        />
-                    )}
-                </div>
-            </div>
-        </div>
-    );
-};
+                        </div>
+                        </div>
+                        </div>
+                        );
+                    };

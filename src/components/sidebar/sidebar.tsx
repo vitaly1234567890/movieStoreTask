@@ -5,7 +5,6 @@ import {useState} from "react";
 
 export const Sidebar = () => {
     const [select, setSelect] = useState("")
-    console.log(select)
     return (
         <div className={s.root}>
             <NavLink to={'/'}>
@@ -19,7 +18,7 @@ export const Sidebar = () => {
             </NavLink>
             <NavLink to={'/ratedMovies'} onClick={() => setSelect('ratedMovies')}
                      className={select === 'ratedMovies' ? s.select : ""}>
-                <div className={`${s.element} ${select === 'ratedMovies' ? s.select : ""}`}>Rated movie</div>
+                <div className={`${s.element} ${select === 'ratedMovies' ? s.select : ""}`}>Rated movies</div>
             </NavLink>
         </div>
     );

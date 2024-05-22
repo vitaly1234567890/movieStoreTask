@@ -1,4 +1,4 @@
-import s from './movieCardSmall.module.scss'
+import s from './movieListItem.module.scss'
 import {Movies, RootGenres} from "../../../services/movie/movies.types.ts";
 import {Icons} from "../../../assets/icons/icons.tsx";
 import {NavLink} from "react-router-dom";
@@ -9,23 +9,14 @@ import {addRatedMovies, removeRatedMovies} from "../../../services/movie/movies.
 import {useDisclosure} from "@mantine/hooks";
 import {Modal, Rating} from "@mantine/core";
 import {AppDispatch, RootState} from "../../../services/store.tsx";
+import {FormatNumber} from "../../../utils/formatNumber.tsx";
 
 type Props = {
     data: Movies
-    genre: RootGenres | undefined
+    genre?: RootGenres
 }
 
-export function formatNumber(number: number) {
-    const suffixes = ['', 'K', 'M', 'B', 'T'];
-    const suffixNum = Math.floor(('' + number).length / 4);
-    let shortNumber = parseFloat((suffixNum !== 0 ? (number / Math.pow(1000, suffixNum)) : number).toPrecision(2));
-    if (shortNumber % 1 !== 0) {
-        shortNumber = +shortNumber.toFixed(1);
-    }
-    return shortNumber + suffixes[suffixNum];
-}
-
-export const MovieCardSmall = ({data, genre}: Props) => {
+export const MovieListItem = ({data, genre}: Props) => {
 
     const dispatch: AppDispatch = useDispatch();
     const rating = useSelector((state: RootState) => state.ratedMovies.movieRatings[data.id]);
@@ -63,7 +54,7 @@ const openModal = (event: React.MouseEvent<HTMLButtonElement>) => {
                 <div className={s.modalMain}>
                     <div className={s.line}></div>
                     <p className={s.titleModal}>{data.title}</p>
-                    <Rating size={'xl'} count={10} onChange={setRatingCount} value={ratingCount}/>
+                    <Rating defaultValue={rating} size={'xl'} count={10} onChange={setRatingCount} value={ratingCount}/>
                     <div className={s.buttons}>
                         <Button variant={'primaryM'} children={'Save'} onClick={()=>saveRating(ratingCount)}/>
                         <Button className={s.buttonText} variant={'text'} children={'Remove rating'} onClick={removeRating}/>
@@ -88,13 +79,12 @@ const openModal = (event: React.MouseEvent<HTMLButtonElement>) => {
                                     <span><Icons iconId={'star'} width={'26'} height={'25'}
                                                  viewBox={'0 0 26 25'}/> </span>
                                     <span className={s.ratingGrade}>{voteAverage} </span>
-                                    <span className={s.voteCount}> ({formatNumber(data.vote_count)})</span>
+                                    <span className={s.voteCount}> ({FormatNumber(data.vote_count)})</span>
                                 </div>
                             </div>
                             <div><span className={s.genre}>Genres</span> {genreArray}</div>
                         </div>
                         <div>
-                            {rating > 0 ? (
                                 <div className={s.activeButton}>
                                     <Button
                                         className={s.Button}
@@ -104,24 +94,11 @@ const openModal = (event: React.MouseEvent<HTMLButtonElement>) => {
                                             <Icons viewBox={"0 0 26 25"}
                                                    width={'26'}
                                                    height={'25'}
-                                                   iconId={'buttonIconActive'}/>
+                                                   iconId={rating > 0 ? 'buttonIconActive' : 'buttonIcon'}/>
                                         }
                                     />
-                                    <span className={s.titleModal}>{rating}</span>
+                                    {rating && <span className={s.titleModal}>{rating}</span>}
                                 </div>
-                            ) : (
-                                <Button
-                                    className={s.Button}
-                                    variant={'icon'}
-                                    onClick={openModal}
-                                    children={
-                                        <Icons viewBox={"0 0 26 25"}
-                                               width={'26'}
-                                               height={'25'}
-                                               iconId={'buttonIcon'}/>
-                                    }
-                                />
-                            )}
                         </div>
                     </div>
                 </div>
