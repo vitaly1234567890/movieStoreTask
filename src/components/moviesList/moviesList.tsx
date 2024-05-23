@@ -107,13 +107,13 @@ export const MoviesList = () => {
             <div>
                 <h2 className={s.title}>Movies</h2>
                 <div className={s.filters}>
-                    <CustomSelect size={'284px'} reset={resetSelect} label={'Genres'} placeholder={'Select genre'}
+                    <CustomSelect reset={resetSelect} label={'Genres'} placeholder={'Select genre'}
                                   data={arrayGenre} onChange={selectGenre} iconSelect={iconSelect}/>
-                    <CustomSelect size={'284px'} reset={resetSelect} label={'Release year'} iconSelect={iconSelect}
+                    <CustomSelect reset={resetSelect} label={'Release year'} iconSelect={iconSelect}
                                   placeholder={'Select release year'} data={arrayYear()} onChange={selectYear}/>
-                    <CustomSelect size={'138px'} reset={resetSelect} label={'Ratings'} placeholder={'From'}
+                    <CustomSelect reset={resetSelect} label={'Ratings'} placeholder={'From'}
                                   data={rating} onChange={selectRatingFrom}/>
-                    <CustomSelect size={'138px'} reset={resetSelect} label={' '} placeholder={'To'} data={rating}
+                    <CustomSelect reset={resetSelect} label={' '} placeholder={'To'} data={rating}
                                   onChange={selectRatingTo}/>
                     <Button className={isResetButtonActive ? s.button + " " + s.buttonActive : s.button}
                             children={'Reset filters'} variant={'text'} onClick={resetFilter}/>

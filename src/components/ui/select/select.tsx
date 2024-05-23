@@ -43,8 +43,8 @@ export const CustomSelect = ({onChange,label,placeholder,data, defaultValue, res
                     onChange={handleChange}
                     classNames={s}
                     rightSection={iconSelect?.(opened)}
-                    onDropdownOpen={()=>setOpened?.(true)}
-                    onDropdownClose={()=>setOpened?.(false)}
+                    onDropdownOpen={()=>setOpened(true)}
+                    onDropdownClose={()=>setOpened(false)}
             />
         </div>
     );
