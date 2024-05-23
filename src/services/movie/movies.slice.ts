@@ -27,7 +27,10 @@ export const ratedMoviesSlice = createSlice({
         },
         removeRatedMovies: (state, action: PayloadAction<{ movieId: string}>) => {
             const {movieId} = action.payload
-            state.ratedMovies = state.ratedMovies.filter(movie => movie.id !== +movieId);
+            const index = state.ratedMovies.findIndex(movie => movie.id === +movieId);
+            if (index !== -1) {
+                state.ratedMovies.splice(index, 1);
+            }
             delete state.movieRatings[movieId];
         },
     },

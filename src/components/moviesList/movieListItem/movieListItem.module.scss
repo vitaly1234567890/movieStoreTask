@@ -46,6 +46,7 @@
 .release_date {
   font-size: 16px;
   color: var(--color-grey-600);
+  margin-bottom: 4px;
 }
 
 .rating {
@@ -98,4 +99,24 @@ a {
 .activeButton {
   display: flex;
   gap: 7px;
+}
+
+@media (max-width: 780px) {
+  .root {
+    width: 100%;
+    height: auto;
+    background-color: var(--color-white);
+    border-radius: 12px;
+  }
+
+  .mainContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .activeButton {
+    order: -1;
+  }
 }

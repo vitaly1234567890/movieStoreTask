@@ -10,11 +10,11 @@ type Props = {
     onChange?: (value: string) => void
     reset?: boolean
     size?: string
-    rightSection?: React.ReactNode
-    setOpened?: (value: boolean)=> void
+    iconSelect?: (opened: boolean) => React.ReactNode;
 }
-export const CustomSelect = ({onChange,label,placeholder,data, defaultValue, reset, size, rightSection, setOpened}: Props) => {
+export const CustomSelect = ({onChange,label,placeholder,data, defaultValue, reset, size, iconSelect}: Props) => {
     const [selectValue, setSelectValue] = useState<string | null>('');
+    const [opened, setOpened] = useState(false);
 
     const handleChange = (value: string | null) => {
         setSelectValue(value || "");
@@ -42,9 +42,9 @@ export const CustomSelect = ({onChange,label,placeholder,data, defaultValue, res
                     value={selectValue}
                     onChange={handleChange}
                     classNames={s}
-                    rightSection={rightSection}
-                    onDropdownOpen={() => setOpened?.(true)}
-                    onDropdownClose={() => setOpened?.(false)}
+                    rightSection={iconSelect?.(opened)}
+                    onDropdownOpen={()=>setOpened?.(true)}
+                    onDropdownClose={()=>setOpened?.(false)}
             />
         </div>
     );

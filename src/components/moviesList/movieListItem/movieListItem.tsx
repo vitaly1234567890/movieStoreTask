@@ -73,7 +73,6 @@ const openModal = (event: React.MouseEvent<HTMLButtonElement>) => {
                         <div className={s.content}>
                             <div>
                                 <div className={s.title}>{data.title}</div>
-
                                 <div className={s.release_date}>{releaseYear}</div>
                                 <div className={s.rating}>
                                     <span><Icons iconId={'star'} width={'26'} height={'25'}

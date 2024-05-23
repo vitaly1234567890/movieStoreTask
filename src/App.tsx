@@ -11,8 +11,12 @@ function App() {
     const showSidebar = location.pathname !== "/notfound";
     return (
             <div className='root'>
-                { showSidebar && <Sidebar /> }
-                <Routes>
+                    {showSidebar &&
+                        <div className='sidebar'>
+                            <Sidebar/>
+                        </div>
+                        }
+                        <Routes>
                     <Route path={'/'} element={<Navigate to={'movies'}/>}/>
                     <Route path={'/movies'} element={<MoviesList/>}/>
                     <Route path={'/ratedMovies'} element={<RatedMovies />}/>

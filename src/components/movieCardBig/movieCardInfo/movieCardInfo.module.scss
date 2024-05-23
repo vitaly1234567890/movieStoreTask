@@ -36,7 +36,6 @@
   justify-content: space-between;
   padding-left: 16px;
   width: 263px;
-  //height: 170px;
   height: 100%;
   flex-grow: 1;
 }
@@ -97,4 +96,50 @@
 .activeButton {
   display: flex;
   gap: 7px;
+}
+
+@media (max-width: 1024px) {
+  .root {
+    width: 100%;
+    height: auto;
+    background-color: var(--color-white);
+    border-radius: 12px;
+  }
+
+  .mainContent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .title {
+    text-align: center;
+    width: 100%;
+    color: var(--color-purple-500-main);
+    font-size: 16px;
+  }
+
+  .content {
+    width: 100%;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .descriptionsContainer {
+    width: 100%;
+  }
+
+  .buttonWrap {
+    margin-left: 0;
+  }
+
+  .rating {
+    width: 100%;
+    justify-content: start;
+    align-items: start;
+  }
 }

@@ -6,7 +6,6 @@ type Props = {
     data: RootBigMovies
 }
 export const MovieDescription = ({data}: Props) => {
-
     return (
         <div className={s.root}>
             <div className={s.mainContent}>
@@ -19,18 +18,12 @@ export const MovieDescription = ({data}: Props) => {
                             width={'500px'}
                             controls={true}
                         />
-                        {/*<iframe*/}
-                        {/*    width={'500'}*/}
-                        {/*    height={'281px'}*/}
-                        {/*    allowFullScreen*/}
-                        {/*    src={`https://www.themoviedb.org/video/play?key=${data.videos.results[0].key}`}*/}
-                        {/*/>*/}
                     </div>
                     : ""
                 }
                 <div className={s.line}></div>
                 <p className={s.heading}>Description</p>
-                <div>{data?.overview}</div>
+                <div className={s.description}>{data?.overview}</div>
                 <div className={s.line}></div>
                 <p className={s.heading}>Production</p>
                 {data?.production_companies.map(el => {

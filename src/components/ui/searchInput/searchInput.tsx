@@ -16,7 +16,7 @@ export function InputWithButton({ onSearch, onEnterPress, ...props }: maimType) 
        return (
         <div className={s.root}>
             <TextInput
-                onKeyPress={onEnterPress}
+                onKeyDown={onEnterPress}
                 className={s.input}
                 radius={8}
                 size="md"

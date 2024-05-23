@@ -7,7 +7,7 @@ import {MovieListItem} from "../moviesList/movieListItem/movieListItem.tsx";
 import {Pagination} from "@mantine/core";
 import {useGetGenresQuery} from "../../services/movie/movies.services.ts";
 import {RootState} from "../../services/store.tsx";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {InputWithButton} from "../ui/searchInput/searchInput.tsx";
 import {Movies} from "../../services/movie/movies.types.ts";
 
@@ -23,6 +23,10 @@ export const RatedMovies = () => {
     const startIndex = (activePage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const itemsToShow = filteredRatedMovies.slice(startIndex, endIndex);
+
+    useEffect(() => {
+        setFilteredRatedMovies(ratedMovies);
+    }, [ratedMovies]);
 
     const onClickGoHome = () => {
         navigate('/movies');

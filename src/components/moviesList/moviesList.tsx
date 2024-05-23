@@ -2,7 +2,7 @@ import {MovieListItem} from "./movieListItem/movieListItem.tsx";
 import {useGetGenresQuery, useGetMoviesQuery} from "../../services/movie/movies.services.ts";
 import s from './moviesList.module.scss'
 import {useState} from "react";
-import {Pagination} from "@mantine/core";
+import {Loader, Pagination} from "@mantine/core";
 import {CustomSelect} from "../ui/select/select.tsx";
 import {Button} from "../ui/button/button.tsx";
 import {Icons} from "../../assets/icons/icons.tsx";
@@ -83,8 +83,8 @@ export const MoviesList = () => {
         setResetSelect(true)
     }
 
-    const [opened, setOpened] = useState(false);
-    const iconSelect = () => {
+
+    const iconSelect = (opened: boolean) => {
         return opened ? <Icons width={'16'} height={'8'} viewBox={"0 0 16 8"} iconId={'arrowUp'}/> :
             <Icons width={'16'} height={'8'} viewBox={"0 0 16 8"} iconId={'arrowDown'}/>
     }
@@ -95,20 +95,21 @@ export const MoviesList = () => {
     const movieResults = data?.results || [];
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return (
+            <div className={s.loader}>
+                <Loader color="blue" size="lg" />;
+            </div>
+            )
     }
 
     return (
         <div className={s.container}>
-
             <div>
                 <h2 className={s.title}>Movies</h2>
                 <div className={s.filters}>
                     <CustomSelect size={'284px'} reset={resetSelect} label={'Genres'} placeholder={'Select genre'}
-                                  data={arrayGenre} onChange={selectGenre} rightSection={iconSelect()}
-                                  setOpened={setOpened}/>
-                    <CustomSelect size={'284px'} reset={resetSelect} label={'Release year'} rightSection={iconSelect()}
-                                  setOpened={setOpened}
+                                  data={arrayGenre} onChange={selectGenre} iconSelect={iconSelect}/>
+                    <CustomSelect size={'284px'} reset={resetSelect} label={'Release year'} iconSelect={iconSelect}
                                   placeholder={'Select release year'} data={arrayYear()} onChange={selectYear}/>
                     <CustomSelect size={'138px'} reset={resetSelect} label={'Ratings'} placeholder={'From'}
                                   data={rating} onChange={selectRatingFrom}/>
@@ -120,7 +121,7 @@ export const MoviesList = () => {
                 <div className={s.sort}>
                     <CustomSelect size={'284px'} reset={resetSelect} defaultValue={'Most Popular'} label={'Sort by'}
                                   placeholder={'Most Popular'} data={sortArrayForSelect} onChange={sortBy}
-                                  rightSection={iconSelect()} setOpened={setOpened}/>
+                                  iconSelect={iconSelect}/>
                 </div>
             </div>
             {movieResults.length === 0 ? <div className={s.noMovie}>

@@ -1,6 +1,6 @@
 .root {
   padding: 24px;
-  width: 280px;
+  max-width: 280px;
   background-color: var(--color-purple-100);
   flex-grow: 1;
 }
@@ -39,6 +39,30 @@
 .root a, .root a:visited, .root a:hover, .root a:active {
   text-decoration: none;
   color: inherit;
+}
+
+@media (max-width: 780px) {
+  .root {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    width: 100%;
+    background-color: var(--color-grey-100);
+    flex-grow: 1;
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 
