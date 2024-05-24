@@ -31,9 +31,8 @@ export const CustomSelect = ({onChange,label,placeholder,data, defaultValue, res
 
 
     return (
-        <div>
             <Select label={label}
-                    style={{ width: size }}
+                    style={{width: size}}
                     searchable
                     defaultValue={defaultValue}
                     allowDeselect
@@ -46,6 +45,5 @@ export const CustomSelect = ({onChange,label,placeholder,data, defaultValue, res
                     onDropdownOpen={()=>setOpened(true)}
                     onDropdownClose={()=>setOpened(false)}
             />
-        </div>
     );
 };

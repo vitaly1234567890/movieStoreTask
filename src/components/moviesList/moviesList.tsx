@@ -97,23 +97,23 @@ export const MoviesList = () => {
     if (isLoading) {
         return (
             <div className={s.loader}>
-                <Loader color="blue" size="lg" />;
+                <Loader color="blue" size="lg"/>;
             </div>
-            )
+        )
     }
 
     return (
         <div className={s.container}>
-            <div>
+            <div className={s.contentWrapper}>
                 <h2 className={s.title}>Movies</h2>
                 <div className={s.filters}>
-                    <CustomSelect reset={resetSelect} label={'Genres'} placeholder={'Select genre'}
+                    <CustomSelect size={'284px'} reset={resetSelect} label={'Genres'} placeholder={'Select genre'}
                                   data={arrayGenre} onChange={selectGenre} iconSelect={iconSelect}/>
-                    <CustomSelect reset={resetSelect} label={'Release year'} iconSelect={iconSelect}
+                    <CustomSelect size={'284px'} reset={resetSelect} label={'Release year'} iconSelect={iconSelect}
                                   placeholder={'Select release year'} data={arrayYear()} onChange={selectYear}/>
-                    <CustomSelect reset={resetSelect} label={'Ratings'} placeholder={'From'}
+                    <CustomSelect size={'138px'} reset={resetSelect} label={'Ratings'} placeholder={'From'}
                                   data={rating} onChange={selectRatingFrom}/>
-                    <CustomSelect reset={resetSelect} label={' '} placeholder={'To'} data={rating}
+                    <CustomSelect size={'138px'} reset={resetSelect} label={' '} placeholder={'To'} data={rating}
                                   onChange={selectRatingTo}/>
                     <Button className={isResetButtonActive ? s.button + " " + s.buttonActive : s.button}
                             children={'Reset filters'} variant={'text'} onClick={resetFilter}/>
@@ -123,13 +123,11 @@ export const MoviesList = () => {
                                   placeholder={'Most Popular'} data={sortArrayForSelect} onChange={sortBy}
                                   iconSelect={iconSelect}/>
                 </div>
-            </div>
-            {movieResults.length === 0 ? <div className={s.noMovie}>
-                    <Icons height={'253'} width={'311'} viewBox={"0 0 311 253"} iconId={'noMovie'}/>
-                    <p className={s.noMovieTitle}>We don't have such movies, look for another one</p>
-                </div>
-                :
-                <div>
+                {movieResults.length === 0 ? <div className={s.noMovie}>
+                        <Icons height={'253'} width={'311'} viewBox={"0 0 311 253"} iconId={'noMovie'}/>
+                        <p className={s.noMovieTitle}>We don't have such movies, look for another one</p>
+                    </div>
+                    :
                     <div className={s.movieCard}>
                         {movieResults.map(el => {
                             return (
@@ -139,18 +137,16 @@ export const MoviesList = () => {
                             )
                         })}
                     </div>
-                    <div className={s.paginationWrapper}>
-                        <div className={s.paginator}>
-                            <Pagination
-                                color={'#9854F6'}
-                                value={activePage}
-                                onChange={setPage}
-                                total={data?.total_pages || 0}
-                            />
-                        </div>
-                    </div>
+                }
+                <div className={s.paginator}>
+                    <Pagination
+                        color={'#9854F6'}
+                        value={activePage}
+                        onChange={setPage}
+                        total={data?.total_pages || 0}
+                    />
                 </div>
-            }
+            </div>
         </div>
     );
 };
