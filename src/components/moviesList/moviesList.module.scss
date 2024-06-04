@@ -43,6 +43,10 @@
   padding: 0;
 }
 
+.button:disabled:hover {
+  cursor: not-allowed;
+}
+
 .buttonActive {
   color: var(--color-purple-500-main);
 }
@@ -52,6 +56,13 @@
   justify-content: flex-end;
   width: 100%;
   margin: 24px 0;
+}
+
+.noMovie {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .noMovieTitle {

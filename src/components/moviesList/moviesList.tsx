@@ -116,7 +116,7 @@ export const MoviesList = () => {
                     <CustomSelect size={'138px'} reset={resetSelect} label={' '} placeholder={'To'} data={rating}
                                   onChange={selectRatingTo}/>
                     <Button className={isResetButtonActive ? s.button + " " + s.buttonActive : s.button}
-                            children={'Reset filters'} variant={'text'} onClick={resetFilter}/>
+                            children={'Reset filters'} variant={'text'} onClick={resetFilter} disabled={!isResetButtonActive}/>
                 </div>
                 <div className={s.sort}>
                     <CustomSelect size={'284px'} reset={resetSelect} defaultValue={'Most Popular'} label={'Sort by'}
@@ -136,16 +136,16 @@ export const MoviesList = () => {
                                 </div>
                             )
                         })}
+                        <div className={s.paginator}>
+                            <Pagination
+                                color={'#9854F6'}
+                                value={activePage}
+                                onChange={setPage}
+                                total={data?.total_pages || 0}
+                            />
+                        </div>
                     </div>
                 }
-                <div className={s.paginator}>
-                    <Pagination
-                        color={'#9854F6'}
-                        value={activePage}
-                        onChange={setPage}
-                        total={data?.total_pages || 0}
-                    />
-                </div>
             </div>
         </div>
     );
