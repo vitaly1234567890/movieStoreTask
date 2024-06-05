@@ -6,6 +6,7 @@ import {Loader, Pagination} from "@mantine/core";
 import {CustomSelect} from "../ui/select/select.tsx";
 import {Button} from "../ui/button/button.tsx";
 import {Icons} from "../../assets/icons/icons.tsx";
+import {CustomMultiSelect} from "../ui/multiSelect/multiSelect.tsx";
 
 const rating = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 const sortArrayForHook = ['original_title.asc', 'original_title.desc', 'popularity.asc', 'popularity.desc',
@@ -36,11 +37,14 @@ export const MoviesList = () => {
     const {data: genre} = useGetGenresQuery({language: 'en'})
 
     const arrayGenre = genre?.genres.map(el => String(el.name))
-    const selectGenre = (genreStr: string) => {
-        const idGenre = genre?.genres.find(el => el.name === genreStr)
-        setSelectedGenre(String(idGenre?.id))
-        setResetSelect(false)
-    }
+    const selectGenre = (genreArr: string[]) => {
+        const idGenre = genreArr.map(genreName => {
+            const genreObj = genre?.genres.find(el => el.name === genreName);
+            return genreObj ? String(genreObj.id) : null;
+        }).filter(id => id !== null);
+            setSelectedGenre(String(idGenre));
+        setResetSelect(false);
+    };
 
     const selectYear = (year: string) => {
         setYear(+year)
@@ -83,7 +87,6 @@ export const MoviesList = () => {
         setResetSelect(true)
     }
 
-
     const iconSelect = (opened: boolean) => {
         return opened ? <Icons width={'16'} height={'8'} viewBox={"0 0 16 8"} iconId={'arrowUp'}/> :
             <Icons width={'16'} height={'8'} viewBox={"0 0 16 8"} iconId={'arrowDown'}/>
@@ -107,7 +110,7 @@ export const MoviesList = () => {
             <div className={s.contentWrapper}>
                 <h2 className={s.title}>Movies</h2>
                 <div className={s.filters}>
-                    <CustomSelect size={'284px'} reset={resetSelect} label={'Genres'} placeholder={'Select genre'}
+                    <CustomMultiSelect size={'284px'} reset={resetSelect} label={'Genres'} placeholder={!selectedGenre ? 'Select genre' : ""}
                                   data={arrayGenre} onChange={selectGenre} iconSelect={iconSelect}/>
                     <CustomSelect size={'284px'} reset={resetSelect} label={'Release year'} iconSelect={iconSelect}
                                   placeholder={'Select release year'} data={arrayYear()} onChange={selectYear}/>
