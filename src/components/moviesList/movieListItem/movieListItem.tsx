@@ -41,7 +41,7 @@ export const MovieListItem = ({data, genre}: Props) => {
     const voteAverage = data.vote_average ? data.vote_average.toFixed(1) : "No vote"
 
     const [opened, { open, close }] = useDisclosure(false);
-    const [ratingCount, setRatingCount] = useState(0);
+    const [ratingCount, setRatingCount] = useState(rating);
 
 const openModal = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
@@ -54,7 +54,7 @@ const openModal = (event: React.MouseEvent<HTMLButtonElement>) => {
                 <div className={s.modalMain}>
                     <div className={s.line}></div>
                     <p className={s.titleModal}>{data.title}</p>
-                    <Rating defaultValue={rating} size={'xl'} count={10} onChange={setRatingCount} value={ratingCount}/>
+                    <Rating size={'xl'} count={10} onChange={setRatingCount} value={ratingCount}/>
                     <div className={s.buttons}>
                         <Button variant={'primaryM'} children={'Save'} onClick={()=>saveRating(ratingCount)}/>
                         <Button className={s.buttonText} variant={'text'} children={'Remove rating'} onClick={removeRating}/>
