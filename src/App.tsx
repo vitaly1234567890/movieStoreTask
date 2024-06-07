@@ -17,7 +17,7 @@ function App() {
                         </div>
                         }
                         <Routes>
-                    <Route path={'/'} element={<Navigate to={'movies'}/>}/>
+                    <Route path={'/'} element={<Navigate to={'/movies'}/>}/>
                     <Route path={'/movies'} element={<MoviesList/>}/>
                     <Route path={'/ratedMovies'} element={<RatedMovies />}/>
                     <Route path={'/movies/:id'} element={<MovieCardBig />}/>
