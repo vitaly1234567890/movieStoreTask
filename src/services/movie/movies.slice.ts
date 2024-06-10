@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Movies} from "./movies.types.ts";
 
 export type RatedMoviesState = {
-    ratedMovies: Movies[],
+    ratedMovies: Movies[] ,
     movieRatings: {
         [movieId: string]: number;
     },

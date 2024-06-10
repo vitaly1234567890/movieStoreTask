@@ -15,7 +15,7 @@
 
 .titleInput {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   margin: auto;
@@ -30,7 +30,7 @@
 }
 
 .noMovie {
- display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -68,6 +68,6 @@
   }
 
   .paginator {
-    margin: 24px auto ;
+    margin: 24px auto;
   }
 }

@@ -1,0 +1,19 @@
+.activeButton {
+  display: flex;
+  gap: 7px;
+}
+
+.Button svg {
+  flex-shrink: 0;
+}
+
+.titleModal {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+@media (max-width: 780px) {
+  .activeButton {
+    order: -1;
+  }
+}

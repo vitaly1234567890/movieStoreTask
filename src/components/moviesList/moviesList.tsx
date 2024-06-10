@@ -42,29 +42,34 @@ export const MoviesList = () => {
             const genreObj = genre?.genres.find(el => el.name === genreName);
             return genreObj ? String(genreObj.id) : null;
         }).filter(id => id !== null);
-            setSelectedGenre(String(idGenre));
+        setSelectedGenre(String(idGenre));
         setResetSelect(false);
+        setPage(1)
     };
 
     const selectYear = (year: string) => {
         setYear(+year)
         setResetSelect(false)
+        setPage(1)
     }
 
     const selectRatingFrom = (rating: string) => {
         setRatingFrom(+rating)
         setResetSelect(false)
+        setPage(1)
     }
 
     const selectRatingTo = (rating: string) => {
         setRatingTo(+rating)
         setResetSelect(false)
+        setPage(1)
     }
 
     const sortBy = (sort: string) => {
         const index = sortArrayForSelect.indexOf(sort)
         setSortedBy(sortArrayForHook[index])
         setResetSelect(false)
+        setPage(1)
     }
 
     const arrayYear = () => {
@@ -110,8 +115,9 @@ export const MoviesList = () => {
             <div className={s.contentWrapper}>
                 <h2 className={s.title}>Movies</h2>
                 <div className={s.filters}>
-                    <CustomMultiSelect size={'284px'} reset={resetSelect} label={'Genres'} placeholder={!selectedGenre ? 'Select genre' : ""}
-                                  data={arrayGenre} onChange={selectGenre} iconSelect={iconSelect}/>
+                    <CustomMultiSelect size={'284px'} reset={resetSelect} label={'Genres'}
+                                       placeholder={!selectedGenre ? 'Select genre' : ""}
+                                       data={arrayGenre} onChange={selectGenre} iconSelect={iconSelect}/>
                     <CustomSelect size={'284px'} reset={resetSelect} label={'Release year'} iconSelect={iconSelect}
                                   placeholder={'Select release year'} data={arrayYear()} onChange={selectYear}/>
                     <CustomSelect size={'138px'} reset={resetSelect} label={'Ratings'} placeholder={'From'}
@@ -119,7 +125,8 @@ export const MoviesList = () => {
                     <CustomSelect size={'138px'} reset={resetSelect} label={' '} placeholder={'To'} data={rating}
                                   onChange={selectRatingTo}/>
                     <Button className={isResetButtonActive ? s.button + " " + s.buttonActive : s.button}
-                            children={'Reset filters'} variant={'text'} onClick={resetFilter} disabled={!isResetButtonActive}/>
+                            children={'Reset filters'} variant={'text'} onClick={resetFilter}
+                            disabled={!isResetButtonActive}/>
                 </div>
                 <div className={s.sort}>
                     <CustomSelect size={'284px'} reset={resetSelect} defaultValue={'Most Popular'} label={'Sort by'}

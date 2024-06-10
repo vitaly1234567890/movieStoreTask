@@ -1,10 +1,10 @@
 import s from "./movieCardInfo.module.scss";
 import {Icons} from "../../../assets/icons/icons.tsx";
 import {RootBigMovies} from "../../../services/movie/movies.types.ts";
-import {Button} from "../../ui/button/button.tsx";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../services/store.tsx";
 import {FormatNumber} from "../../../utils/formatNumber.tsx";
+import {ModalWrapper} from "../../ui/modal/modalWrapper.tsx";
 
 type Props = {
     data: RootBigMovies
@@ -22,7 +22,7 @@ export const MovieCardInfo = ({data}: Props) => {
 
     function formatDate(dateString: string) {
         const date = new Date(dateString);
-        const options: Intl.DateTimeFormatOptions = { month: 'long', day: 'numeric', year: 'numeric' };
+        const options: Intl.DateTimeFormatOptions = {month: 'long', day: 'numeric', year: 'numeric'};
         return date.toLocaleDateString('en-US', options);
     }
 
@@ -68,21 +68,9 @@ export const MovieCardInfo = ({data}: Props) => {
                     </div>
                 </div>
                 <div className={s.buttonWrap}>
-                        <div className={s.activeButton}>
-                            <Button
-                                className={s.Button}
-                                variant={'icon'}
-                                children={
-                                    <Icons viewBox={"0 0 26 25"}
-                                           width={'26'}
-                                           height={'25'}
-                                           iconId={rating > 0 ? 'buttonIconActive' : 'buttonIcon'}/>
-                                }
-                            />
-                            {rating && <span className={s.titleModal}>{rating}</span>}
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        );
-                    };
+                    <ModalWrapper data={data} rating={rating}/>
+                </div>
+            </div>
+        </div>
+    );
+};

@@ -84,20 +84,6 @@
   margin-left: auto;
 }
 
-.Button svg {
-  flex-shrink: 0;
-}
-
-.titleModal {
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.activeButton {
-  display: flex;
-  gap: 7px;
-}
-
 @media (max-width: 1024px) {
   .root {
     width: 100%;
