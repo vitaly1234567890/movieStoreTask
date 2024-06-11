@@ -19,7 +19,7 @@ export const CustomSelect = ({onChange,label,placeholder,data, defaultValue, res
     const handleChange = (value: string | null) => {
         setSelectValue(value || "");
         if (onChange) {
-            onChange(value || ""); // Передаем актуальное значение `value`
+            onChange(value || "");
         }
     };
 
