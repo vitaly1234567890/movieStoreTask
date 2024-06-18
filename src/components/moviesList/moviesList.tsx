@@ -1,21 +1,19 @@
 import { MovieListItem } from "./movieListItem/movieListItem.tsx";
 import s from "./moviesList.module.scss";
 import { Loader, Pagination } from "@mantine/core";
-import { CustomSelect } from "../ui/select/select.tsx";
-import { Button } from "../ui/button/button.tsx";
 import { Icons } from "../../assets/icons/icons.tsx";
-import { CustomMultiSelect } from "../ui/multiSelect/multiSelect.tsx";
 import { useMoviesFilter } from "../../utils/useMoviesFilter.tsx";
+import { Filters } from "./filters/filters.tsx";
 
 export const MoviesList = () => {
   const {
     activePage,
     setPage,
+    isLoading,
+    data,
     selectedGenre,
     rating,
     resetSelect,
-    isLoading,
-    data,
     genre,
     selectGenre,
     selectYear,
@@ -29,7 +27,6 @@ export const MoviesList = () => {
     sortArrayForSelect,
   } = useMoviesFilter();
 
-  const arrayGenre = genre?.genres.map((el) => String(el.name));
   const movieResults = data?.results || [];
 
   if (isLoading) {
@@ -44,63 +41,22 @@ export const MoviesList = () => {
     <div className={s.container}>
       <div className={s.contentWrapper}>
         <h2 className={s.title}>Movies</h2>
-        <div className={s.filters}>
-          <CustomMultiSelect
-            size={"284px"}
-            reset={resetSelect}
-            label={"Genres"}
-            placeholder={!selectedGenre ? "Select genre" : ""}
-            data={arrayGenre}
-            onChange={selectGenre}
-            iconSelect={iconSelect}
-          />
-          <CustomSelect
-            size={"284px"}
-            reset={resetSelect}
-            label={"Release year"}
-            iconSelect={iconSelect}
-            placeholder={"Select release year"}
-            data={arrayYear()}
-            onChange={selectYear}
-          />
-          <CustomSelect
-            size={"138px"}
-            reset={resetSelect}
-            label={"Ratings"}
-            placeholder={"From"}
-            data={rating}
-            onChange={selectRatingFrom}
-          />
-          <CustomSelect
-            size={"138px"}
-            reset={resetSelect}
-            label={" "}
-            placeholder={"To"}
-            data={rating}
-            onChange={selectRatingTo}
-          />
-          <Button
-            className={
-              isResetButtonActive ? s.button + " " + s.buttonActive : s.button
-            }
-            children={"Reset filters"}
-            variant={"text"}
-            onClick={resetFilter}
-            disabled={!isResetButtonActive}
-          />
-        </div>
-        <div className={s.sort}>
-          <CustomSelect
-            size={"284px"}
-            reset={resetSelect}
-            defaultValue={"Most Popular"}
-            label={"Sort by"}
-            placeholder={"Most Popular"}
-            data={sortArrayForSelect}
-            onChange={sortBy}
-            iconSelect={iconSelect}
-          />
-        </div>
+        <Filters
+          genre={genre}
+          arrayYear={arrayYear()}
+          rating={rating}
+          resetSelect={resetSelect}
+          selectedGenre={selectedGenre}
+          selectGenre={selectGenre}
+          selectYear={selectYear}
+          selectRatingFrom={selectRatingFrom}
+          selectRatingTo={selectRatingTo}
+          resetFilter={resetFilter}
+          isResetButtonActive={isResetButtonActive}
+          iconSelect={iconSelect}
+          sortArrayForSelect={sortArrayForSelect}
+          sortBy={sortBy}
+        />
         {movieResults.length === 0 ? (
           <div className={s.noMovie}>
             <Icons

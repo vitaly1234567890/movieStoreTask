@@ -10,21 +10,6 @@
   width: 100%;
 }
 
-.filters {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.sort {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  margin: 24px 0;
-}
-
 .movieCard {
   display: flex;
   flex-wrap: wrap;
@@ -36,19 +21,6 @@
   align-self: flex-start;
   font-size: 32px;
   font-weight: 700;
-}
-
-.button {
-  margin-top: 20px;
-  padding: 0;
-}
-
-.button:disabled:hover {
-  cursor: not-allowed;
-}
-
-.buttonActive {
-  color: var(--color-purple-500-main);
 }
 
 .paginator {
@@ -79,30 +51,9 @@
 }
 
 @media (max-width: 780px) {
-  .filters {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    gap: 16px;
-    order: 1;
-  }
-
   .title {
     display: flex;
     justify-content: center;
-  }
-
-  .sort {
-    display: flex;
-    justify-content: center;
-    margin: 0 0 24px 0;
-  }
-
-  .button {
-    margin-top: 0;
-    padding: 0;
   }
 
   .paginator {
