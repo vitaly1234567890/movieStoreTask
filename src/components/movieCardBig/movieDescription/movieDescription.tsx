@@ -27,18 +27,20 @@ export const MovieDescription = ({ data }: Props) => {
         <div className={s.description}>{data?.overview}</div>
         <div className={s.line}></div>
         <p className={s.heading}>Production</p>
-        {data?.production_companies.map((el) => {
-          return (
-            <div key={el.id} className={s.production}>
-              <img
-                className={s.img}
-                src={`https://image.tmdb.org/t/p/original/${el.logo_path}`}
-                alt={""}
-              />
-              <span className={s.title}>{el.name}</span>
-            </div>
-          );
-        })}
+        <div className={s.productionWrapper}>
+          {data?.production_companies.map((el) => {
+            return (
+                <div key={el.id} className={s.production}>
+                  <img
+                      className={s.img}
+                      src={`https://image.tmdb.org/t/p/original/${el.logo_path}`}
+                      alt={""}
+                  />
+                  <span className={s.title}>{el.name}</span>
+                </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
