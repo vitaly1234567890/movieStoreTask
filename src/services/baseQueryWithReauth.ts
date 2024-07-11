@@ -14,7 +14,6 @@ const baseQuery = fetchBaseQuery({
   headers: {
     accept: 'application/json',
     authorization: 'bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MjA1ODJhZTljYmNmZGQ0YTgxOGE0M2I1ZjM2M2NkMyIsInN1YiI6IjY2NDRkMjlkMTg0YTQ2MzE3MjkxOWU1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jbvDD56W1Xovksdw7byjaJmb2EbjDIciNpgMK-pV_R0'
-
   }
 })
 

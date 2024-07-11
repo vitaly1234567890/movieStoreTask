@@ -24,6 +24,10 @@
   color: var(--color-black);
 }
 
+.burger{
+  display: none;
+}
+
 .element:hover {
   background-color: var(--color-purple-200);
   border-radius: 8px;
@@ -44,24 +48,31 @@
 @media (max-width: 780px) {
   .root {
     display: flex;
-    flex-direction: column;
-    padding: 24px;
-    width: 100%;
+    justify-content: center;
+    max-width: 100%;
     background-color: var(--color-grey-100);
     flex-grow: 1;
   }
 
   .icon {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 0;
   }
 
-  .sidebar {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
+  .element {
+    display: none;
+  }
+
+  .elementHide{
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    padding: 5px;
+    color: var(--color-black);
+  }
+
+  .burger{
+    display: block;
+    margin-left: auto;
   }
 }
 
