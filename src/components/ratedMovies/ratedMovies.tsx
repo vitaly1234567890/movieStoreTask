@@ -10,6 +10,7 @@ import { RootState } from "../../services/store.tsx";
 import React, { useEffect, useState } from "react";
 import { InputWithButton } from "../ui/searchInput/searchInput.tsx";
 import { Movies } from "../../services/movie/movies.types.ts";
+import {Path} from "../../routes/pathRoute.tsx";
 
 export const RatedMovies = () => {
   const [activePage, setPage] = useState(1);
@@ -32,7 +33,7 @@ export const RatedMovies = () => {
   }, [ratedMovies]);
 
   const onClickGoHome = () => {
-    navigate("/movies");
+    navigate(Path.Movies);
   };
 
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {

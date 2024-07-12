@@ -2,12 +2,13 @@ import { Icons } from "../../assets/icons/icons.tsx";
 import s from "./404.module.scss";
 import { Button } from "../ui/button/button.tsx";
 import { useNavigate } from "react-router-dom";
+import {Path} from "../../routes/pathRoute.tsx";
 
 export const NotFound = () => {
   const navigate = useNavigate();
 
   const onClickGoHome = () => {
-    navigate("/movies");
+    navigate(Path.Movies);
   };
 
   return (
